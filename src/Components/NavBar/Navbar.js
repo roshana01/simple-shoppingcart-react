@@ -7,7 +7,7 @@ export default function Navbar() {
     <nav class="navbar navbar-expand-sm py-3 d-flex">
       <div class="container">
         <a href="#" className="navbar-brand">
-          SabzLearn Shop
+          Shop
         </a>
 
         <ul className="navbar-nav me-auto ms-3">
