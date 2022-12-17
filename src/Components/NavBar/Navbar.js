@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BsBag } from "react-icons/bs";
+import produtsContext from "../../Context/ProductsContext";
 import "./Navbar.css";
 
 export default function Navbar() {
+  const contextData = useContext(produtsContext)
   return (
     <nav class="navbar navbar-expand-sm py-3 d-flex">
       <div class="container">
-        <a href="#" className="navbar-brand">
+        <a href="#" className="navbar-brand" >
           Shop
         </a>
 
@@ -19,7 +21,9 @@ export default function Navbar() {
         </ul>
 
         <div className="bag-box">
-          <a href="#" className="bag">
+          <a href="javascript:void(0)" className="bag" onClick={() =>{
+            contextData.setIsShowCart(true)
+          }}>
             <BsBag className="text-white" />
             <span className="bag-products-counter">0</span>
           </a>

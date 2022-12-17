@@ -1,18 +1,22 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { BsBag } from 'react-icons/bs'
 import { AiOutlineClose } from 'react-icons/ai'
 import './Cart.css'
+import produtsContext from "../../Context/ProductsContext";
 
 export default function Cart() {
+    const contextData =useContext(produtsContext)
   return (
-      <aside className='bag-sidebar'> {/* add active class to show bag sidebar */}
+      <aside className={`bag-sidebar ${contextData.isShowCart ?'active' : ''}`}> {/* add active class to show bag sidebar */}
       <h3 className="bag-title">
           <span>
               <BsBag />
               Bag
           </span>
           <span>
-              <AiOutlineClose className='close-icon' />
+              <AiOutlineClose className='close-icon' onClick={() =>{
+                contextData.setIsShowCart(false)
+              }}/>
           </span>
       </h3>
 

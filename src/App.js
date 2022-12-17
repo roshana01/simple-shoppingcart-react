@@ -28,6 +28,7 @@ export default function App() {
         setIsShowCart,
       }}>
         <Navbar />
+        
         <main className="pb-5">
           <div className="container">
             <h1 className="text-center main-title">All Products</h1>
