@@ -8,9 +8,9 @@ import Cart from "./Components/Cart/Cart";
 import produtsContext from "./Context/ProductsContext";
 
 export default function App() {
-  const [allProducts, setAllProducts] = useState(products);
+  const [allProducts, setAllProducts] = useState(products)
   const [userCart, setUserCart] = useState([])
-  const [isShowToast, setIsShowToast] = useState(false)
+  const [isShowToast , setIsShowToast] = useState(false)
   const [isShowCart, setIsShowCart] = useState(false)
 
 
