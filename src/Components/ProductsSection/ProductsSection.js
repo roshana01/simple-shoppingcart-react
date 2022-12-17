@@ -26,14 +26,25 @@ export default function ProductsSection() {
                   <p className="card-text">{product.title}</p>
                   <p className="price">{product.price}$</p>
                   <br />
-                  <a href="javascript:void(0)" className="btn btn-danger" 
-                  onClick={()=>{
-                    contextData.setIsShowToast(true)
-                    setTimeout(() => {
-                      contextData.setIsShowToast(false)
-                    }, 3000);
-                  }}
-                  
+                  <a href="javascript:void(0)" className="btn btn-danger"
+                    onClick={() => {
+                      contextData.setIsShowToast(true)
+                      setTimeout(() => {
+                        contextData.setIsShowToast(false)
+                      }, 3000);
+                      let newCartProduct =
+                      {
+                        id: contextData.userCart.length + 1,
+                        title: product.title,
+                        price: product.price,
+                        count: 1
+                      }
+
+
+                      contextData.setUserCart((prev) => [...prev, newCartProduct])
+                    }}
+
+
                   >
                     Add To Cart
                   </a>

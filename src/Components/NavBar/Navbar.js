@@ -25,7 +25,7 @@ export default function Navbar() {
             contextData.setIsShowCart(true)
           }}>
             <BsBag className="text-white" />
-            <span className="bag-products-counter">0</span>
+            <span className="bag-products-counter">{contextData.userCart.length}</span>
           </a>
         </div>
       </div>
