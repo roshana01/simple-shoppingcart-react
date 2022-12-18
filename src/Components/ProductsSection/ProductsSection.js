@@ -4,6 +4,47 @@ import "./ProductsSection.css";
 
 export default function ProductsSection() {
   const contextData = useContext(produtsContext)
+
+
+  const addToCart = (product) => {
+    contextData.setIsShowToast(true)
+    setTimeout(() => {
+      contextData.setIsShowToast(false)
+    }, 3000);
+
+
+    let isInCart = contextData.userCart.some(producCart => {
+      return product.title == producCart.title
+    })
+    console.log(isInCart); //false 
+    if (!isInCart) {
+      let newCartProduct =
+      {
+        id: contextData.userCart.length + 1,
+        title: product.title,
+        price: product.price,
+        count: 1
+      }
+      contextData.setUserCart((prev) => [...prev, newCartProduct])
+    } else {
+
+      let userCartCopy = [...contextData.userCart]
+
+      userCartCopy.forEach(item => {
+        if (item.title == product.title) {
+          item.count += 1
+          return true
+        }
+      })
+      contextData.setUserCart([...userCartCopy])
+    }
+
+
+
+
+
+  }
+
   return (
     <>
       {contextData.allProducts.map(productSection => (
@@ -27,24 +68,7 @@ export default function ProductsSection() {
                   <p className="price">{product.price}$</p>
                   <br />
                   <a href="javascript:void(0)" className="btn btn-danger"
-                    onClick={() => {
-                      contextData.setIsShowToast(true)
-                      setTimeout(() => {
-                        contextData.setIsShowToast(false)
-                      }, 3000);
-                      let newCartProduct =
-                      {
-                        id: contextData.userCart.length + 1,
-                        title: product.title,
-                        price: product.price,
-                        count: 1
-                      }
-
-
-                      contextData.setUserCart((prev) => [...prev, newCartProduct])
-                    }}
-
-
+                    onClick={() => addToCart(product)}
                   >
                     Add To Cart
                   </a>
